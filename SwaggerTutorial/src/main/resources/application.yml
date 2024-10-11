@@ -3,3 +3,7 @@ springdoc:
     path: /v3/api-docs
   swagger-ui:
     path: /swagger-ui.html
+
+#추가한 내용
+server:
+  port: 8080

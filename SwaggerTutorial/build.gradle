@@ -17,7 +17,10 @@ dependencies {
 
     // Swagger 사용을 위한 의존성 추가
     // 지금 사용하는 Spring doc OPEN API는 Swagger UI를 자동으로 생성함.
-    implementation 'org.springdoc:springdoc-openapi-ui:1.7.0'
+    //implementation 'org.springdoc:springdoc-openapi-ui:1.7.0'
+    //*****추가 내용*****
+    //3.3.4 버전에 맞춘 의존성은 아래와 같다고 하네용
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
 }
