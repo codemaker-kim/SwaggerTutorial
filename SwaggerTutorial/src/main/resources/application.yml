@@ -3,6 +3,11 @@ springdoc:
     path: /v3/api-docs
   swagger-ui:
     path: /swagger-ui.html
+  #추가한 값
+  #요청과 응답에 대한 기본 mediaType을 지정해준다.
+  default-consumes-media-type: application/json;
+  default-produces-media-type: application/json;
+
 
 #추가한 내용
 server:

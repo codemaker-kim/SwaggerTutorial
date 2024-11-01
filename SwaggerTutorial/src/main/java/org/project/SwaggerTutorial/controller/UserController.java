@@ -1,16 +1,18 @@
 package org.project.SwaggerTutorial.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
 
 // Swagger 학습용 간단한 컨트롤러
+@Tag(name = "User", description = "User API")
 @RestController
-@RequestMapping("/api/users")
 public class UserController {
 
     /*
@@ -26,7 +28,7 @@ public class UserController {
             @ApiResponse(responseCode = "500", description = "Internal Server Error")
 
     })
-    @GetMapping
+    @GetMapping("/api/user")
     public List<String> getAllUsers(){
         return Arrays.asList("수민", "케인", "엄준식");
     }
@@ -36,8 +38,11 @@ public class UserController {
             @ApiResponse(responseCode = "200", description = "Successfully get user"),
             @ApiResponse(responseCode = "400", description = "User not found")
     })
-    @GetMapping("{id}")
-    public String getUserById(@PathVariable int id){
+    @GetMapping("/api/user/{id}")
+    public String getUserById(
+            @Parameter(description = "조회할 사용자의 ID", example = "userid")
+            @PathVariable(name = "id", required = true)
+            int id){
         List<String> users = Arrays.asList("수민", "케인", "엄준식");
         if(id < 0 || id >= users.size())
             return "User not found";
@@ -49,7 +54,7 @@ public class UserController {
             @ApiResponse(responseCode = "201", description = "User created Successfully"),
             @ApiResponse(responseCode = "400", description = "Invalid input")
     })
-    @PostMapping
+    @PostMapping("/api/user")
     public String addUser(@RequestBody String name) {
         return "User " + name + " added successfully";
     }
